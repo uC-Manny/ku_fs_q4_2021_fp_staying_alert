@@ -20,22 +20,22 @@ app.post("/api/register", async (req, res) => {
   console.log(req.body);
   try {
     const user = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
+      user_name: req.body.name,
+      email_addr: req.body.email,
+      password_hash: req.body.password,
     });
     user.save();
     res.json({ status: "ok" });
   } catch (err) {
     console.log("error is: ", err);
-    res.json({ status: "error", error: "Duplicate email" });
+    res.json({ status: "error", error: err });
   }
 });
 
 app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
+    email_addr: req.body.email,
+    password_hash: req.body.password,
   });
 
   if (user) {
