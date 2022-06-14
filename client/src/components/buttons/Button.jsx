@@ -2,27 +2,17 @@ import React from "react";
 import "./button.css";
 
 const styles = [
-   "btn--primary--solid",
-   "btn--secondary--solid",
-   "btn--warning--solid",
-   "btn--danger--solid",
-   "btn--success--solid",
-   "btn--primary--outline",
-   "btn--secondary--outline",
-   "btn--warning--outline",
-   "btn--danger--outline",
-   "btn--success--outline",
+   "btn-primary",
+   "btn-secondary",
+   "btn-warning",
+   "btn-danger",
+   "btn-success",
+   "btn-info",
 ];
 
-const sizes = ["btn--small", "btn--medium", "btn--large"];
+const sizes = ["btn-sm", "btn-md", "btn-lg"];
 
-export default function Button({
-   children,
-   type,
-   onClick,
-   buttonStyle,
-   buttonSize,
-}) {
+export default function Button({ children, onClick, buttonStyle, buttonSize }) {
    const checkButtonStyle = styles.includes(buttonStyle)
       ? buttonStyle
       : styles[0];
@@ -32,7 +22,6 @@ export default function Button({
       <button
          className={`btn ${checkButtonStyle} ${checkButtonSize}`}
          onClick={onClick}
-         type={type}
       >
          {children}
       </button>

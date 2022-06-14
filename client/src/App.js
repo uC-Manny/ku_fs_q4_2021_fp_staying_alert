@@ -53,42 +53,79 @@ function App() {
             <input type="submit" value="Register" />
          </form>
          {/* Button Testing Begins */}
+         <br />
          <div>
             <Button
                onClick={() => {
                   console.log("The Register button was clicked");
                }}
-               type="button"
-               buttonStyle="btn--success--solid"
-               buttonSize="btn--small"
+               buttonStyle="btn-success"
+               buttonSize="btn-sm"
             >
                Register
             </Button>
          </div>
+         <br />
          <div>
             <Button
                onClick={() => {
                   console.log("The Cancel button was clicked");
                }}
-               type="button"
-               buttonStyle="btn--danger--solid"
-               buttonSize="btn--small"
+               buttonStyle="btn-danger"
+               buttonSize="btn-sm"
             >
                Cancel
             </Button>
          </div>
+         <br />
          <div>
             <Button
                onClick={() => {
                   console.log("The Test button was clicked");
                }}
-               type="button"
-               buttonStyle="btn--secondary--solid"
-               buttonSize="btn--small"
+               buttonStyle="btn-secondary"
+               buttonSize="btn-sm"
             >
                Test
             </Button>
          </div>
+         <br />
+         <div>
+            <Button
+               onClick={() => {
+                  console.log("The Info button was clicked");
+               }}
+               buttonStyle="btn-info"
+               buttonSize="btn-sm"
+            >
+               Information
+            </Button>
+         </div>
+         <br />
+         <div>
+            <Button
+               onClick={() => {
+                  console.log("The Delete button was clicked");
+               }}
+               buttonStyle="btn-warning"
+               buttonSize="btn-sm"
+            >
+               Delete
+            </Button>
+         </div>
+         <br />
+         <div>
+            <Button
+               onClick={() => {
+                  console.log("The Alert button was clicked");
+               }}
+               buttonStyle="btn-danger"
+               buttonSize="btn-lg"
+            >
+               Emergency Alert
+            </Button>
+         </div>
+
          {/* Button Testing Ends */}
       </div>
    );
