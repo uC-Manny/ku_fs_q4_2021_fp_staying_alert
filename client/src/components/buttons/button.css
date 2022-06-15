@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+:root {
+   --primary: #4628ff;
+   --secondary: #777777;
+   --warning: #ffd028;
+   --danger: #CC0000;
+   --success: #00B74A;
+   --info: #33b5e5;
+   --white: #fdfdfd;
+   --dark: #181717;
+}
+
+.btn {
+   font-family: "Roboto", sans-serif;
+   font-weight: 400;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: transform 0.3s ease;
+}
+
+.btn:hover {
+   transform: translateY(-3px);
+}
+
+/* Button Colors and Styles */
+
+.btn-primary {
+   background-color: var(--primary);
+   color: var(--white);
+   border: none;
+}
+
+.btn-secondary {
+   background-color: var(--secondary);
+   color: var(--white);
+   border: none;
+}
+
+.btn-warning {
+   background-color: var(--warning);
+   color: var(--dark);
+   border: none;
+}
+
+.btn-danger {
+   background-color: var(--danger);
+   color: var(--white);
+   border: none;
+}
+
+.btn-success {
+   background-color: var(--success);
+   color: var(--white);
+   border: none;
+}
+
+.btn-info {
+   background-color: var(--info);
+   color: var(--dark);
+   border: none;
+}
+
+/* Button Sizes */
+
+.btn-sm {
+   padding: 5px 10px;
+   font-size: 16px;
+}
+
+.btn-md {
+   padding: 10px 20px;
+   font-size: 18px;
+}
+
+.btn-lg {
+   padding: 15px 30px;
+   font-size: 20px;
+}
