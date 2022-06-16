@@ -61,10 +61,19 @@ export default function LoginForm() {
                   console.log("Create Account button was pressed");
                }}
                buttonStyle="btn-info"
-               buttonSize="btn-md"
+               buttonSize="btn-sm"
             >
             Create Account
             </Button>
+            <Button
+            onClick={() => {
+               console.log("The EMERGENCY Alert button was clicked");
+            }}
+            buttonStyle="btn-danger"
+            buttonSize="btn-lg"
+         >
+            Emergency Alert
+         </Button>
          </Form>
       </Formik>
    );
