@@ -1,12 +1,11 @@
 import React from "react";
-import Button from "./components/buttons/Button";
-import RegisterForm from "./components/forms/RegisterForm";
+import Button from "./components/Buttons/Button";
+import RegisterForm from "./components/Forms/RegisterForm";
 import "./App.css";
 
 function App() {
    return (
       <>
-         <h1>Register</h1>
          <RegisterForm />
          <h1>Button (Examples)</h1>
          <Button

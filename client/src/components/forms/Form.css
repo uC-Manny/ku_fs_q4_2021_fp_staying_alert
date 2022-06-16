@@ -1,0 +1,41 @@
+.form-box {
+   text-align: center;
+   align-items: center;
+   max-width: 600px;
+   min-height: 300px;
+   margin: 60px auto;
+   padding: 30px;
+   background-color: #ecf0f3;
+   border-radius: 15px;
+   box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+}
+
+.form-box .form-name {
+   font-weight: 600;
+   font-size: 1.4rem;
+   letter-spacing: 1.3px;
+   padding-left: 10px;
+   color: #555
+}
+
+.form-box .form-field input {
+   display: block;
+   border: none;
+   outline: none;
+   background: none;
+   font-size: 1.2rem;
+   color: #666;
+   padding: 10px 15px 10px 10px;
+}
+
+.form-box .form-field {
+   width: 25%;
+   min-width: 300px;
+   padding-left: 10px;
+   margin: 0 auto;
+   margin-bottom: 20px;
+   border-radius: 20px;
+   box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+   text-align: center;
+   align-items: center;
+}

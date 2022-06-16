@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import Button from "../buttons/Button";
+import Button from "../Buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function RegisterForm() {
    const [name, setName] = useState("");
+   const [fname, setFname] = useState("");
+   const [lname, setLname] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+   const [repeat_password, setRepeatPassword] = useState("");
 
    async function registerUser(event) {
       // event.preventDefault();
@@ -17,8 +20,11 @@ export default function RegisterForm() {
          },
          body: JSON.stringify({
             name,
+            fname,
+            lname,
             email,
             password,
+            repeat_password,
          }),
       });
 
@@ -30,17 +36,32 @@ export default function RegisterForm() {
          initialValues={{ user_name: "", email_addr: "", password_hash: "" }}
          onSubmit={registerUser}
       >
-         <Form>
+         <Form className="form-box">
+            <div className="form-name">
+               <h2>Register</h2>
+            </div>
             <MyTextInput
-               label="Name"
                name="user_name"
                type="text"
-               placeholder="Name"
+               placeholder="Username"
                value={name}
                onChange={(e) => setName(e.target.value)}
             />
             <MyTextInput
-               label="Email"
+               name="first_name"
+               type="text"
+               placeholder="First Name"
+               value={fname}
+               onChange={(e) => setFname(e.target.value)}
+            />
+            <MyTextInput
+               name="last_name"
+               type="text"
+               placeholder="Last Name"
+               value={lname}
+               onChange={(e) => setLname(e.target.value)}
+            />
+            <MyTextInput
                name="email_addr"
                type="email"
                placeholder="Email Address"
@@ -48,12 +69,18 @@ export default function RegisterForm() {
                onChange={(e) => setEmail(e.target.value)}
             />
             <MyTextInput
-               label="Password"
                name="password_hash"
                type="password"
                placeholder="Password"
                value={password}
                onChange={(e) => setPassword(e.target.value)}
+            />
+            <MyTextInput
+               name="repeat_password"
+               type="password"
+               placeholder="Re-enter Password"
+               value={repeat_password}
+               onChange={(e) => setRepeatPassword(e.target.value)}
             />
             <Button
                // This onClick is for testing purposes only
@@ -61,7 +88,7 @@ export default function RegisterForm() {
                   console.log("The Register button was clicked");
                }}
                buttonStyle="btn-success"
-               buttonSize="btn-sm"
+               buttonSize="btn-md"
                type="submit"
             >
                Register
