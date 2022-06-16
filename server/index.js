@@ -34,9 +34,11 @@ app.post("/api/register", async (req, res) => {
 
 app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
-    email_addr: req.body.email,
+    user_name: req.body.name,
     password_hash: req.body.password,
   });
+
+  console.log("BkEnd:user = ", user);
 
   if (user) {
     return res.json({ status: "ok", user: true });

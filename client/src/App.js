@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./components/buttons/Button";
 import RegisterForm from "./components/forms/RegisterForm";
+import LoginForm from "./components/forms/LoginForm";
 import "./App.css";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <>
          <h1>Register</h1>
          <RegisterForm />
+         <LoginForm />
          <h1>Button (Examples)</h1>
          <Button
             onClick={() => {
