@@ -12,7 +12,13 @@ const styles = [
 
 const sizes = ["btn-sm", "btn-md", "btn-lg"];
 
-export default function Button({ children, onClick, buttonStyle, buttonSize }) {
+export default function Button({
+   children,
+   onClick,
+   buttonStyle,
+   buttonSize,
+   type,
+}) {
    const checkButtonStyle = styles.includes(buttonStyle)
       ? buttonStyle
       : styles[0];
@@ -22,6 +28,7 @@ export default function Button({ children, onClick, buttonStyle, buttonSize }) {
       <button
          className={`btn ${checkButtonStyle} ${checkButtonSize}`}
          onClick={onClick}
+         type={type}
       >
          {children}
       </button>
