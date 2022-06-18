@@ -4,6 +4,7 @@ const unique_active = false;
 
 const Check_In = new mongoose.Schema({
   id : {type:Number, required: require_active, unique: unique_active},
+  id_num : {type:Number, required: require_active, unique: unique_active},
   check_in_name: {type:String, required: require_active},
   owner_person_id: {type:mongoose.Schema.Types.ObjectId, ref:"PersonData"},
   start_date: {type:Date},

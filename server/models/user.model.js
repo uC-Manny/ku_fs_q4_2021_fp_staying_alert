@@ -4,6 +4,7 @@ const unique_active = false;
 
 const User = new mongoose.Schema({
   id : {type:Number, required: require_active, unique: unique_active},
+  id_num : {type:Number, required: require_active, unique: unique_active},
   user_name: {type:String, required: require_active, unique: unique_active},
   first_name: {type:String, required: require_active},
   last_name: {type:String, required: require_active},
