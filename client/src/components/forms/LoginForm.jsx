@@ -28,9 +28,11 @@ export default function LoginForm() {
          initialValues={{ user_name: "", password_hash: "" }}
          onSubmit={loginUser}
       >
-         <Form>
-            <MyTextInput
-               label="Name"
+         <Form className="form-box">
+           <div className="form-name">
+             <h2>Login</h2>
+           </div>
+         <MyTextInput
                name="user_name"
                type="text"
                placeholder="Name"
@@ -38,7 +40,6 @@ export default function LoginForm() {
                onChange={(e) => setUname(e.target.value)}
             />
             <MyTextInput
-               label="Password"
                name="password_hash"
                type="password"
                placeholder="Password"

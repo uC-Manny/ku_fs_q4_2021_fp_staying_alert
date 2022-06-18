@@ -42,10 +42,9 @@ export default function RegisterForm() {
       >
          <Form className="form-box">
            <div className="form-name">
-             <h2>Register</h2>
+             <h2>Create Account</h2>
            </div>
          <MyTextInput
-               label="User Name: "
                name="user_name"
                type="text"
                placeholder="User Name"
@@ -53,7 +52,6 @@ export default function RegisterForm() {
                onChange={(e) => setUname(e.target.value)}
             />
             <MyTextInput
-               label="First Name: "
                name="first_name"
                type="text"
                placeholder="First Name"
@@ -61,7 +59,6 @@ export default function RegisterForm() {
                onChange={(e) => setFname(e.target.value)}
             />
             <MyTextInput
-               label="Last Name: "
                name="last_name"
                type="text"
                placeholder="Last Name"
@@ -69,7 +66,6 @@ export default function RegisterForm() {
                onChange={(e) => setLname(e.target.value)}
             />
             <MyTextInput
-               label="Email Address: "
                name="email_addr"
                type="email"
                placeholder="Email Address"
@@ -77,7 +73,6 @@ export default function RegisterForm() {
                onChange={(e) => setEmail(e.target.value)}
             />
             <MyTextInput
-               label="Password: "
                name="password_hash"
                type="password"
                placeholder="Password"
@@ -85,7 +80,6 @@ export default function RegisterForm() {
                onChange={(e) => setPassword(e.target.value)}
             />
             <MyTextInput
-               label="Repeat Password: "
                name="rpassword"
                type="password"
                placeholder="Re-enter Password"
