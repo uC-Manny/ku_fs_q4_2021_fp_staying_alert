@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import Button from "../buttons/Button";
+import Button from "../Buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function RegisterForm() {
@@ -40,7 +40,10 @@ export default function RegisterForm() {
          initialValues={{ user_name: "", first_name: "", last_name: "", email_addr: "", password_hash: "", rpassword: "" }}
          onSubmit={registerUser}
       >
-         <Form>
+         <Form className="form-box">
+           <div className="form-name">
+             <h2>Register</h2>
+           </div>
          <MyTextInput
                label="User Name: "
                name="user_name"
@@ -95,7 +98,7 @@ export default function RegisterForm() {
                   console.log("The Register button was clicked");
                }}
                buttonStyle="btn-success"
-               buttonSize="btn-sm"
+               buttonSize="btn-md"
                type="submit"
             >
                Create Account
