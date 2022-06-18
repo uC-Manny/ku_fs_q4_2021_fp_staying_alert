@@ -4,7 +4,7 @@ import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function LoginForm() {
-   const [name, setName] = useState("");
+   const [uname, setUname] = useState("");
    const [password, setPassword] = useState("");
 
    async function loginUser(event) {
@@ -15,7 +15,7 @@ export default function LoginForm() {
             "Content-Type": "application/json",
          },
          body: JSON.stringify({
-            name,
+            uname,
             password,
          }),
       });
@@ -34,8 +34,8 @@ export default function LoginForm() {
                name="user_name"
                type="text"
                placeholder="Name"
-               value={name}
-               onChange={(e) => setName(e.target.value)}
+               value={uname}
+               onChange={(e) => setUname(e.target.value)}
             />
             <MyTextInput
                label="Password"

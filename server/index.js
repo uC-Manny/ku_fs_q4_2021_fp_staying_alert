@@ -56,15 +56,20 @@ app.post("/api/register", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
     user_name: req.body.uname,
-    password_hash: req.body.password,
   });
 
   console.log("BkEnd:user = ", user);
 
-  if (user) {
-    return res.json({ status: "ok", user: true });
+  if (!user) {
+    console.log("*** Invalid User Name ***");
+    return res.json({ status: "error", user: false, error: "Invalid User Name" });
+  } 
+  if (!bcrypt.compareSync(req.body.password, user.password_hash)) {
+    console.log("*** Invalid Password Entered ***");
+    return res.json({ status: "error", user: false, error: "Invalid Password Entered" });
   } else {
-    return res.json({ status: "error", user: false });
+    console.log("!!! Successfully Logged In !!!");
+    return res.json({ status: "ok", user: true, message: "Successfully Logged In" });
   }
 });
 
