@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-import Button from "../Buttons/Button";
+import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function RegisterForm() {

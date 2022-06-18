@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./components/Buttons/Button";
+import Button from "./components/buttons/Button";
 import RegisterForm from "./components/forms/RegisterForm";
 import LoginForm from "./components/forms/LoginForm";
 import "./App.css";
