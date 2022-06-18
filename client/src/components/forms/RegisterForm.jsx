@@ -4,12 +4,12 @@ import Button from "../Buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function RegisterForm() {
-   const [name, setName] = useState("");
+   const [uname, setUname] = useState("");
    const [fname, setFname] = useState("");
    const [lname, setLname] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
-   const [repeat_password, setRepeatPassword] = useState("");
+   const [rpassword, setRpassword] = useState("");
 
    async function registerUser(event) {
       // event.preventDefault();
@@ -19,35 +19,41 @@ export default function RegisterForm() {
             "Content-Type": "application/json",
          },
          body: JSON.stringify({
-            name,
+            uname,
             fname,
             lname,
             email,
             password,
-            repeat_password,
+            rpassword,
          }),
       });
 
       const data = await response.json();
       console.log("data is...", data);
+      if(data.status === "ok")
+         alert("Account Successfully Created")
+      else
+         alert(data.error)
    }
    return (
       <Formik
-         initialValues={{ user_name: "", email_addr: "", password_hash: "" }}
+         initialValues={{ user_name: "", first_name: "", last_name: "", email_addr: "", password_hash: "", rpassword: "" }}
          onSubmit={registerUser}
       >
          <Form className="form-box">
-            <div className="form-name">
-               <h2>Register</h2>
-            </div>
-            <MyTextInput
+           <div className="form-name">
+             <h2>Register</h2>
+           </div>
+         <MyTextInput
+               label="User Name: "
                name="user_name"
                type="text"
-               placeholder="Username"
-               value={name}
-               onChange={(e) => setName(e.target.value)}
+               placeholder="User Name"
+               value={uname}
+               onChange={(e) => setUname(e.target.value)}
             />
             <MyTextInput
+               label="First Name: "
                name="first_name"
                type="text"
                placeholder="First Name"
@@ -55,6 +61,7 @@ export default function RegisterForm() {
                onChange={(e) => setFname(e.target.value)}
             />
             <MyTextInput
+               label="Last Name: "
                name="last_name"
                type="text"
                placeholder="Last Name"
@@ -62,6 +69,7 @@ export default function RegisterForm() {
                onChange={(e) => setLname(e.target.value)}
             />
             <MyTextInput
+               label="Email Address: "
                name="email_addr"
                type="email"
                placeholder="Email Address"
@@ -69,6 +77,7 @@ export default function RegisterForm() {
                onChange={(e) => setEmail(e.target.value)}
             />
             <MyTextInput
+               label="Password: "
                name="password_hash"
                type="password"
                placeholder="Password"
@@ -76,11 +85,12 @@ export default function RegisterForm() {
                onChange={(e) => setPassword(e.target.value)}
             />
             <MyTextInput
-               name="repeat_password"
+               label="Repeat Password: "
+               name="rpassword"
                type="password"
                placeholder="Re-enter Password"
-               value={repeat_password}
-               onChange={(e) => setRepeatPassword(e.target.value)}
+               value={rpassword}
+               onChange={(e) => setRpassword(e.target.value)}
             />
             <Button
                // This onClick is for testing purposes only
@@ -91,7 +101,7 @@ export default function RegisterForm() {
                buttonSize="btn-md"
                type="submit"
             >
-               Register
+               Create Account
             </Button>
          </Form>
       </Formik>

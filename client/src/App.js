@@ -1,12 +1,14 @@
 import React from "react";
 import Button from "./components/Buttons/Button";
 import RegisterForm from "./components/forms/RegisterForm";
+import LoginForm from "./components/forms/LoginForm";
 import "./App.css";
 
 function App() {
    return (
       <>
          <RegisterForm />
+         <LoginForm />
          <h1>Button (Examples)</h1>
          <Button
             onClick={() => {
