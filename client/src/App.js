@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./components/Buttons/Button";
-import RegisterForm from "./components/Forms/RegisterForm";
+import RegisterForm from "./components/forms/RegisterForm";
 import "./App.css";
 
 function App() {
