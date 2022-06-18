@@ -3,6 +3,9 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 app.use(cors());
 app.use(express.json());
@@ -17,24 +20,37 @@ mongoose
   .catch((err) => console.log(err));
 
 app.post("/api/register", async (req, res) => {
+  let bpassword = "";
+  let rpassword = "";
   console.log(req.body);
-  try {
-    const user = await User.create({
-      user_name: req.body.name,
-      email_addr: req.body.email,
-      password_hash: req.body.password,
-    });
-    user.save();
-    res.json({ status: "ok" });
-  } catch (err) {
-    console.log("error is: ", err);
-    res.json({ status: "error", error: err });
+  bpassword = req.body.password;
+  rpassword = req.body.rpassword;
+  if (bpassword !== rpassword) {
+      err = "!!!Passwords do not match!!!"
+      res.json({ status: "error", error: err });
+  } else {
+    try {
+      const salt = bcrypt.genSaltSync(saltRounds);
+      const hash = bcrypt.hashSync(bpassword, salt);
+      const user = await User.create({
+        user_name: req.body.uname,
+        first_name: req.body.fname,
+        last_name: req.body.lname,
+        email_addr: req.body.email,
+        password_hash: hash,
+      });
+        user.save();
+        res.json({ status: "ok" });
+    } catch (err) {
+      console.log("error is: ", err);
+      res.json({ status: "error", error: err });
+    }
   }
 });
 
 app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
-    user_name: req.body.name,
+    user_name: req.body.uname,
     password_hash: req.body.password,
   });
 
