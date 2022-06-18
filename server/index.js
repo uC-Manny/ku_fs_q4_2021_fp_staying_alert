@@ -69,7 +69,8 @@ app.post("/api/login", async (req, res) => {
     return res.json({ status: "error", user: false, error: "Invalid Password Entered" });
   } else {
     console.log("!!! Successfully Logged In !!!");
-    return res.json({ status: "ok", user: true, message: "Successfully Logged In" });
+    return res.json({ status: "ok", user: true, message: "Successfully Logged In",
+                      fname: user.first_name, lname: user.last_name, uname: user.user_name });  // Sending back the names on record! ;-)
   }
 });
 
