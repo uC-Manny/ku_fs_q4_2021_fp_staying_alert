@@ -20,9 +20,13 @@ mongoose
   .catch((err) => console.log(err));
 
 app.post("/api/register", async (req, res) => {
+  const users = await User.find({}); // Get all the users
+  const num_users = users.length;
+  const new_user_num = users[num_users-1].id_num ? users[num_users-1].id_num + 1 : 1; // Look at the last record for the next number
+  console.log("Number of users = " + users.length);
+  console.log("New User # = " + new_user_num);
   let bpassword = "";
   let rpassword = "";
-  console.log(req.body);
   bpassword = req.body.password;
   rpassword = req.body.rpassword;
   if (bpassword !== rpassword) {
@@ -38,6 +42,7 @@ app.post("/api/register", async (req, res) => {
         last_name: req.body.lname,
         email_addr: req.body.email,
         password_hash: hash,
+        id_num: new_user_num,
       });
         user.save();
         res.json({ status: "ok" });
