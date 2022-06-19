@@ -6,14 +6,26 @@ const User = require("./models/user.model");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const registerRouter = require("./routes/register_route");
-const loginRouter = require("./routes/login_route");
+const registerRoutes = require("./routes/register_routes");
+const loginRoutes = require("./routes/login_routes");
+const personRoutes = require("./routes/person_routes");
+const groupRoutes = require("./routes/groups_routes");
+const assistanceRoutes = require("./routes/assistance_routes");
+const checkInRoutes = require("./routes/check_in_routes");
+const dashboardRoutes = require("./routes/dashboard_routes");
+const transactionRoutes = require("./routes/transactions_routes");
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/", registerRouter);
-app.use("/", loginRouter);
+app.use("/api/register", registerRoutes);
+app.use("/api/login", loginRoutes);
+app.use("/api/person", personRoutes);
+app.use("/api/groups", groupsRoutes);
+app.use("/api/assistance", assistanceRoutes);
+app.use("/api/checkIn", checkInRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/transaction", transactionRoutes);
 
 mongoose
   .connect(
