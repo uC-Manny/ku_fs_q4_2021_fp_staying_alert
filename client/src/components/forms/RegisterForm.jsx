@@ -97,6 +97,17 @@ export default function RegisterForm() {
             >
                Create Account
             </Button>
+            <Button
+               // This onClick is for testing purposes only
+               onClick={() => {
+                  console.log("The Register-Cancel button was clicked");
+               }}
+               buttonStyle="btn-warning"
+               buttonSize="btn-md"
+               type="button"
+            >
+               Cancel
+            </Button>
          </Form>
       </Formik>
    );
