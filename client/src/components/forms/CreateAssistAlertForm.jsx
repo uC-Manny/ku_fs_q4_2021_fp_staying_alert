@@ -28,7 +28,7 @@ export default function CreateAssistAlertForm() {
       const data = await response.json();
       console.log("data is...", data);
       if(data.status === "ok")
-         alert("Account Successfully Created")
+         alert("Assitance Alert Successfully Created")
       else
          alert(data.error)
    }

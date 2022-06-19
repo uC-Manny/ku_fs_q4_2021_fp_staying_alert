@@ -18,10 +18,11 @@ mongoose
 
   app.post("/api/register", async (req, res) => {
     const users = await User.find({}); // Get all the users
+    let new_user_num = 1;
     const num_users = users.length;
-    const new_user_num = users[num_users-1].id_num ? users[num_users-1].id_num + 1 : 1; // Look at the last record for the next number
-    console.log("Number of users = " + users.length);
-    console.log("New User # = " + new_user_num);
+    if(num_users !== 0){
+      new_user_num = users[num_users-1].id_num ? users[num_users-1].id_num + 1 : 1; // Look at the last record for the next number
+    }
     let bpassword = "";
     let rpassword = "";
     bpassword = req.body.password;
@@ -52,12 +53,12 @@ mongoose
   });
 
   app.post("/api/assistance", async (req, res) => {
-    //const assistances = await Assistance.find({}); // Get all the assitances
-    //const num_assistances = assistances.length;
-    //const new_assistance_num = assistances[num_assistances-1].id_num ? assistances[num_assistances-1].id_num + 1 : 1; // Look at the last record for the next number
-    //console.log("Number of assistances = " + assistances.length);
-    //console.log("New Assistance # = " + new_assistance_num);
-    new_assistance_num = 1;
+    const assistances = await Assistance.find({}); // Get all the assitances
+    let new_assistance_num = 1;
+    const num_assistances = assistances.length;
+    if(num_assistances !== 0) {
+      new_assistance_num = assistances[num_assistances-1].id_num ? assistances[num_assistances-1].id_num + 1 : 1; // Look at the last record for the next number
+    }
     try {
         const assitance = await Assistance.create({
         user_id: req.body.user_id,
@@ -78,8 +79,6 @@ app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
     user_name: req.body.uname,
   });
-
-  console.log("BkEnd:user = ", user);
 
   if (!user) {
     console.log("*** Invalid User Name ***");
