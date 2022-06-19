@@ -18,7 +18,7 @@ const User = new mongoose.Schema(
       required: require_active,
       unique: unique_active,
     },
-    password: { type: String, required: require_active },
+    password_hash: { type: String, required: require_active },
     emergency_msg: { type: String },
     emer_person_id: { type: mongoose.Schema.Types.ObjectId, ref: "PersonData" },
     emer_group_id: { type: mongoose.Schema.Types.ObjectId, ref: "GroupsData" },
