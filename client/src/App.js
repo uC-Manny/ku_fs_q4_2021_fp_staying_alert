@@ -9,61 +9,98 @@ function App() {
       <>
          <RegisterForm />
          <LoginForm />
-         <h1>Button (Examples)</h1>
+         <h2>Button Styles</h2>
          <Button
             onClick={() => {
-               console.log("The Register button was clicked");
+               console.log("The button was clicked");
             }}
-            buttonStyle="btn-success"
+            buttonStyle="btn-primary"
             buttonSize="btn-sm"
          >
-            Register
+            btn-primary
          </Button>{" "}
          <Button
             onClick={() => {
-               console.log("The Cancel button was clicked");
-            }}
-            buttonStyle="btn-danger"
-            buttonSize="btn-sm"
-         >
-            Cancel
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The Test button was clicked");
+               console.log("The button was clicked");
             }}
             buttonStyle="btn-secondary"
             buttonSize="btn-sm"
          >
-            Test
+            btn-secondary
          </Button>{" "}
          <Button
             onClick={() => {
-               console.log("The Info button was clicked");
-            }}
-            buttonStyle="btn-info"
-            buttonSize="btn-sm"
-         >
-            Information
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The Delete button was clicked");
+               console.log("The button was clicked");
             }}
             buttonStyle="btn-warning"
             buttonSize="btn-sm"
          >
-            Delete
+            btn-warning
          </Button>{" "}
          <Button
             onClick={() => {
-               console.log("The Alert button was clicked");
+               console.log("The button was clicked");
             }}
             buttonStyle="btn-danger"
+            buttonSize="btn-sm"
+         >
+            btn-danger
+         </Button>{" "}
+         <Button
+            onClick={() => {
+               console.log("The button was clicked");
+            }}
+            buttonStyle="btn-success"
+            buttonSize="btn-sm"
+         >
+            btn-success
+         </Button>{" "}
+         <Button
+            onClick={() => {
+               console.log("The button was clicked");
+            }}
+            buttonStyle="btn-info"
+            buttonSize="btn-sm"
+         >
+            btn-info
+         </Button>{" "}
+         <h2>Button Sizes</h2>
+         <Button
+            onClick={() => {
+               console.log("The button was clicked");
+            }}
+            buttonStyle="btn-primary"
+            buttonSize="btn-sm"
+         >
+            btn-sm
+         </Button>{" "}
+         <Button
+            onClick={() => {
+               console.log("The button was clicked");
+            }}
+            buttonStyle="btn-primary"
+            buttonSize="btn-md"
+         >
+            btn-md
+         </Button>{" "}
+         <Button
+            onClick={() => {
+               console.log("The button was clicked");
+            }}
+            buttonStyle="btn-primary"
             buttonSize="btn-lg"
          >
-            Emergency Alert
-         </Button>
+            btn-lg
+         </Button>{" "}
+         <Button
+            onClick={() => {
+               console.log("The button was clicked");
+            }}
+            buttonStyle="btn-primary"
+            buttonSize="btn-xl"
+         >
+            btn-xl
+         </Button>{" "}
       </>
    );
 }

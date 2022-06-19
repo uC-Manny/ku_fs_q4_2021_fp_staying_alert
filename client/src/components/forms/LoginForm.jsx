@@ -29,10 +29,10 @@ export default function LoginForm() {
          onSubmit={loginUser}
       >
          <Form className="form-box">
-           <div className="form-name">
-             <h2>Login</h2>
-           </div>
-         <MyTextInput
+            <div className="form-name">
+               <h2>Login</h2>
+            </div>
+            <MyTextInput
                name="user_name"
                type="text"
                placeholder="Name"
@@ -64,17 +64,17 @@ export default function LoginForm() {
                buttonStyle="btn-info"
                buttonSize="btn-sm"
             >
-            Create Account
+               Create Account
             </Button>
             <Button
-            onClick={() => {
-               console.log("The EMERGENCY Alert button was clicked");
-            }}
-            buttonStyle="btn-danger"
-            buttonSize="btn-lg"
-         >
-            Emergency Alert
-         </Button>
+               onClick={() => {
+                  console.log("The EMERGENCY Alert button was clicked");
+               }}
+               buttonStyle="btn-danger"
+               buttonSize="btn-xl"
+            >
+               Emergency Alert
+            </Button>
          </Form>
       </Formik>
    );

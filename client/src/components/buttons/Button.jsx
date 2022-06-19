@@ -1,5 +1,5 @@
 import React from "react";
-import "./Button.css";
+import "./button.css";
 
 const styles = [
    "btn-primary",
@@ -10,7 +10,7 @@ const styles = [
    "btn-info",
 ];
 
-const sizes = ["btn-sm", "btn-md", "btn-lg"];
+const sizes = ["btn-sm", "btn-md", "btn-lg", "btn-xl"];
 
 export default function Button({
    children,
