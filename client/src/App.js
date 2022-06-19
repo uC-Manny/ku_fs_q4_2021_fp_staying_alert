@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./components/buttons/Button";
+import CreateAssistAlertForm from "./components/forms/CreateAssistAlertForm";
 import RegisterForm from "./components/forms/RegisterForm";
 import LoginForm from "./components/forms/LoginForm";
 import "./App.css";
@@ -9,6 +10,7 @@ function App() {
       <>
          <RegisterForm />
          <LoginForm />
+         <CreateAssistAlertForm />
          <h2>Button Styles</h2>
          <Button
             onClick={() => {

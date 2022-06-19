@@ -2,10 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const User = require("./models/user.model");
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-
+const Assistance = require("./models/assistance.model");
 
 app.use(cors());
 app.use(express.json());
@@ -19,40 +16,64 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-app.post("/api/register", async (req, res) => {
-  const users = await User.find({}); // Get all the users
-  const num_users = users.length;
-  const new_user_num = users[num_users-1].id_num ? users[num_users-1].id_num + 1 : 1; // Look at the last record for the next number
-  console.log("Number of users = " + users.length);
-  console.log("New User # = " + new_user_num);
-  let bpassword = "";
-  let rpassword = "";
-  bpassword = req.body.password;
-  rpassword = req.body.rpassword;
-  if (bpassword !== rpassword) {
-      err = "!!!Passwords do not match!!!"
-      res.json({ status: "error", error: err });
-  } else {
+  app.post("/api/register", async (req, res) => {
+    const users = await User.find({}); // Get all the users
+    const num_users = users.length;
+    const new_user_num = users[num_users-1].id_num ? users[num_users-1].id_num + 1 : 1; // Look at the last record for the next number
+    console.log("Number of users = " + users.length);
+    console.log("New User # = " + new_user_num);
+    let bpassword = "";
+    let rpassword = "";
+    bpassword = req.body.password;
+    rpassword = req.body.rpassword;
+    if (bpassword !== rpassword) {
+        err = "!!!Passwords do not match!!!"
+        res.json({ status: "error", error: err });
+    } else {
+      try {
+        const salt = bcrypt.genSaltSync(saltRounds);
+        const hash = bcrypt.hashSync(bpassword, salt);
+        const user = await User.create({
+          user_name: req.body.uname,
+          first_name: req.body.fname,
+          last_name: req.body.lname,
+          email_addr: req.body.email,
+          password_hash: hash,
+          removed: req.body.removed,
+          id_num: new_user_num,
+        });
+          user.save();
+          res.json({ status: "ok" });
+      } catch (err) {
+        console.log("error is: ", err);
+        res.json({ status: "error", error: err });
+      }
+    }
+  });
+
+  app.post("/api/assistance", async (req, res) => {
+    //const assistances = await Assistance.find({}); // Get all the assitances
+    //const num_assistances = assistances.length;
+    //const new_assistance_num = assistances[num_assistances-1].id_num ? assistances[num_assistances-1].id_num + 1 : 1; // Look at the last record for the next number
+    //console.log("Number of assistances = " + assistances.length);
+    //console.log("New Assistance # = " + new_assistance_num);
+    new_assistance_num = 1;
     try {
-      const salt = bcrypt.genSaltSync(saltRounds);
-      const hash = bcrypt.hashSync(bpassword, salt);
-      const user = await User.create({
-        user_name: req.body.uname,
-        first_name: req.body.fname,
-        last_name: req.body.lname,
-        email_addr: req.body.email,
-        password_hash: hash,
-        id_num: new_user_num,
+        const assitance = await Assistance.create({
+        user_id: req.body.user_id,
+        person_2_assist_id: req.body.person_id_num,
+        critial_info_msg: req.body.criticalInfo,
+        removed: req.body.removed,
+        id_num: new_assistance_num,
       });
-        user.save();
-        res.json({ status: "ok" });
+      assitance.save();
+      res.json({ status: "ok" });
     } catch (err) {
       console.log("error is: ", err);
       res.json({ status: "error", error: err });
     }
-  }
-});
-
+  });
+    
 app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
     user_name: req.body.uname,

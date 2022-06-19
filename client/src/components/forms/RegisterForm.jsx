@@ -4,6 +4,7 @@ import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function RegisterForm() {
+   const removed = false;
    const [uname, setUname] = useState("");
    const [fname, setFname] = useState("");
    const [lname, setLname] = useState("");
@@ -25,6 +26,7 @@ export default function RegisterForm() {
             email,
             password,
             rpassword,
+            removed,
          }),
       });
 
