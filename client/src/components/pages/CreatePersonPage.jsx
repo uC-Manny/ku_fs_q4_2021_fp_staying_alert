@@ -1,5 +1,5 @@
-import AddPerson from "../forms/AddPerson";
+import CreatePersonForm from "../forms/CreatePersonForm";
 
 export default function CreatePersonPage() {
-   return <AddPerson />;
+   return <CreatePersonForm />;
 }

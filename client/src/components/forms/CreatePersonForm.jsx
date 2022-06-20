@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
 
-export default function AddPersonForm() {
+export default function CreatePersonForm() {
    const [first_name, setfirst_name] = useState("");
    const [last_name, setlast_name] = useState("");
    const [pref_name, setpref_name] = useState("");
