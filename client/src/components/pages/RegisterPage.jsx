@@ -1,9 +1,8 @@
-// can import the register form and header
-// import any buttons needed
-// link api call to backend /api/register
+import RegisterForm from "../forms/RegisterForm";
 
-function RegisterPage() {
-  return <div>RegisterPage</div>;
+
+export default function RegisterPage() {
+  return (
+     <RegisterForm />
+  );
 }
-
-export default RegisterPage;

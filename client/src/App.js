@@ -1,109 +1,40 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Button from "./components/buttons/Button";
-import CreateAssistAlertForm from "./components/forms/CreateAssistAlertForm";
-import RegisterForm from "./components/forms/RegisterForm";
-import LoginForm from "./components/forms/LoginForm";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CodePracticePage from "./components/pages/CodePracticePage";
+import RegisterPage from "./components/pages/RegisterPage";
+import LoginPage from "./components/pages/LoginPage";
+import Navbar from "./components/navbar/Navbar";
 import "./App.css";
+import CreateAssistAlertPage from "./components/pages/CreateAssistAlertPage";
+
 
 function App() {
    return (
       <>
-         <RegisterForm />
-         <LoginForm />
-         <CreateAssistAlertForm />
-         <h2>Button Styles</h2>
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-primary"
-            buttonSize="btn-sm"
-         >
-            btn-primary
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-secondary"
-            buttonSize="btn-sm"
-         >
-            btn-secondary
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-warning"
-            buttonSize="btn-sm"
-         >
-            btn-warning
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-danger"
-            buttonSize="btn-sm"
-         >
-            btn-danger
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-success"
-            buttonSize="btn-sm"
-         >
-            btn-success
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-info"
-            buttonSize="btn-sm"
-         >
-            btn-info
-         </Button>{" "}
-         <h2>Button Sizes</h2>
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-primary"
-            buttonSize="btn-sm"
-         >
-            btn-sm
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-primary"
-            buttonSize="btn-md"
-         >
-            btn-md
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-primary"
-            buttonSize="btn-lg"
-         >
-            btn-lg
-         </Button>{" "}
-         <Button
-            onClick={() => {
-               console.log("The button was clicked");
-            }}
-            buttonStyle="btn-primary"
-            buttonSize="btn-xl"
-         >
-            btn-xl
-         </Button>{" "}
+      <Router>
+         <Navbar />
+         <div className = "App">
+            <div>
+               <h1>Staying Alert</h1>
+            </div>
+            <Switch>
+
+               <Route exact path = "/">
+                  <LoginPage />               
+               </Route>
+               <Route exact path = "/register">
+                  <RegisterPage />               
+               </Route>
+               <Route exact path = "/create_assist_alert">
+                  <CreateAssistAlertPage />               
+               </Route>
+               <Route exact path = "/code_practice">
+                  <CodePracticePage />               
+               </Route>
+            </Switch>
+
+         </div>
+      </Router>
       </>
    );
 }
