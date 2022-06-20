@@ -44,7 +44,7 @@ mongoose
     let new_assistance_num = 1;
     const num_assistances = assistances.length;
     if(num_assistances !== 0) {
-      new_assistance_num = assistances[num_assistances-1].id_num ? assistances[num_assistances-1].id_num + 1 : 1; // Look at the last record for the next number
+      new_assistance_num = assistances[num_assistances-1].id_num + 1; // Look at the last record for the next number
     }
     try {
         const assitance = await Assistance.create({
