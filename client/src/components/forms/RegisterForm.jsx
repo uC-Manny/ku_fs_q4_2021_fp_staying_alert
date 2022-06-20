@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
+import { useHistory } from "react-router-dom";
 
 export default function RegisterForm() {
    const removed = false;
@@ -11,6 +12,15 @@ export default function RegisterForm() {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [rpassword, setRpassword] = useState("");
+
+   const history = useHistory();
+
+   const cancelRouteChange = () => {
+      let path = '/';
+      history.push(path);
+   }
+
+   const createRouteChange = cancelRouteChange;
 
    async function registerUser(event) {
       // event.preventDefault();
@@ -36,6 +46,7 @@ export default function RegisterForm() {
          alert("Account Successfully Created")
       else
          alert(data.error)
+      createRouteChange();
    }
    return (
       <Formik
@@ -89,10 +100,7 @@ export default function RegisterForm() {
                onChange={(e) => setRpassword(e.target.value)}
             />
             <Button
-               // This onClick is for testing purposes only
-               onClick={() => {
-                  console.log("The Register button was clicked");
-               }}
+               onClick={() => {}}
                buttonStyle="btn-success"
                buttonSize="btn-md"
                type="submit"
@@ -100,10 +108,7 @@ export default function RegisterForm() {
                Create Account
             </Button>
             <Button
-               // This onClick is for testing purposes only
-               onClick={() => {
-                  console.log("The Register-Cancel button was clicked");
-               }}
+               onClick={cancelRouteChange}
                buttonStyle="btn-warning"
                buttonSize="btn-md"
                type="button"

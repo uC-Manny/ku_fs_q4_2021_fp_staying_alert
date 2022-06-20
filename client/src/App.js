@@ -6,6 +6,7 @@ import LoginPage from "./components/pages/LoginPage";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
 import CreateAssistAlertPage from "./components/pages/CreateAssistAlertPage";
+import DashboardPage from "./components/pages/DashboardPage";
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
                </Route>
                <Route exact path = "/code_practice">
                   <CodePracticePage />               
+               </Route>
+               <Route exact path = "/logged_in">
+                  <DashboardPage />               
                </Route>
             </Switch>
 

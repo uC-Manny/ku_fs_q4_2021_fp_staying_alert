@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import Button from "../buttons/Button";
 import { MyTextInput, TextPanel } from "./Form";
@@ -8,6 +9,15 @@ export default function CreateAssistAlertForm() {
    const removed = false;
    const [person_id_num, setPerson_id_num] = useState(null);
    const [criticalInfo, setCriticalInfo] = useState("");
+   
+   const history = useHistory();
+
+   const cancelRouteChange = () => {
+      let path = '/';
+      history.push(path);
+   }
+
+   const createRouteChange = cancelRouteChange;
 
    async function createAssistAlert(event) {
       // event.preventDefault();
@@ -31,6 +41,7 @@ export default function CreateAssistAlertForm() {
          alert("Assitance Alert Successfully Created")
       else
          alert(data.error)
+      createRouteChange();
    }
    return (
       <Formik
@@ -60,10 +71,7 @@ export default function CreateAssistAlertForm() {
             <div>
 
             <Button
-               // This onClick is for testing purposes only
-               onClick={() => {
-                  console.log("The Create-Assist-Alert button was clicked");
-               }}
+               onClick={() => {}}
                buttonStyle="btn-success"
                buttonSize="btn-md"
                type="submit"
@@ -71,10 +79,7 @@ export default function CreateAssistAlertForm() {
                Create
             </Button>
             <Button
-               // This onClick is for testing purposes only
-               onClick={() => {
-                  console.log("The Create-Assist-Alert-Cancel button was clicked");
-               }}
+               onClick={cancelRouteChange}
                buttonStyle="btn-warning"
                buttonSize="btn-md"
                type="button"
