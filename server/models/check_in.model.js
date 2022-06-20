@@ -20,6 +20,7 @@ const Check_In = new mongoose.Schema({
   //contact_group: {type:mongoose.Schema.Types.ObjectId, ref:"GroupsData"},
   contact_group: {type:Number, required: require_active},
   action_plan: {type:String, required: require_active},
+  removed: {type: Boolean},
 }, 
 {collection: 'check_in', timestamps: true}
 )

@@ -23,6 +23,7 @@ const User = new mongoose.Schema(
     emer_person_id: { type: mongoose.Schema.Types.ObjectId, ref: "PersonData" },
     emer_group_id: { type: mongoose.Schema.Types.ObjectId, ref: "GroupsData" },
     loc_interval_in_mins: { type: Number },
+    removed: { type: Boolean },
   },
   { collection: "user_account", timestamps: true }
 );
