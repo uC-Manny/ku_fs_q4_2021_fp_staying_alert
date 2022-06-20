@@ -19,7 +19,7 @@ const transactionRoutes = require("./routes/transactions_routes");
 app.use(cors());
 app.use(express.json());
 
-app.use("/api", userRoutes);
+app.use("/api/user", userRoutes);
 // app.use("/api/register", registerRoutes);
 // app.use("/api/login", loginRoutes);
 app.use("/api/person", personRoutes);
