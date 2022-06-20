@@ -54,7 +54,7 @@ router.get("/register", (req, res) => {
 router.post("/register", async (req, res) => {
   const users = await User.find({}); // Get all the users
   const num_users = users.length;
-  const new_user_num = 1;
+  let new_user_num = 1;
   if(num_users !== 0) new_user_num = users[num_users - 1].id_num + 1
   let bpassword = "";
   let rpassword = "";
