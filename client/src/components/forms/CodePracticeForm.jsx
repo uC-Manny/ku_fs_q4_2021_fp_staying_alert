@@ -10,7 +10,6 @@ export default function CodePracticeForm() {
          <RegisterForm />
          <LoginForm />
          <CreateAssistAlertForm />
-         <RegisterForm />
          <h2>Button Styles</h2>
          <Button
             onClick={() => {
