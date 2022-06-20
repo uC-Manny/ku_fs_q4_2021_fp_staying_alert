@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
@@ -13,9 +14,18 @@ export default function CreatePersonForm() {
    const [assistAlertContacts, setAssistAlertContacts] = useState("");
    const [person_is_self, setperson_is_self] = useState("");
 
+   const history = useHistory();
+
+   const cancelRouteChange = () => {
+      let path = "/";
+      history.push(path);
+   };
+
+   const createRouteChange = cancelRouteChange;
+
    async function addPerson(event) {
       // event.preventDefault();
-      const response = await fetch("http://localhost:1337/api/addPerson", {
+      const response = await fetch("http://localhost:1337/api/person/create", {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
@@ -34,6 +44,9 @@ export default function CreatePersonForm() {
 
       const data = await response.json();
       console.log("data is...", data);
+      if (data.status === "ok") alert("Assitance Alert Successfully Created");
+      else alert(data.error);
+      createRouteChange();
    }
    return (
       <Formik
@@ -51,7 +64,7 @@ export default function CreatePersonForm() {
       >
          <Form className="form-box">
             <div className="form-name">
-               <h2>Add Person</h2>
+               <h2>Create Person</h2>
             </div>
             <MyTextInput
                name="first_name"
@@ -118,20 +131,16 @@ export default function CreatePersonForm() {
             <br />
             <br />
             <Button
-               onClick={() => {
-                  console.log("The Add button was clicked");
-               }}
+               onClick={() => {}}
                buttonStyle="btn-success"
                buttonSize="btn-md"
                type="submit"
             >
-               Add
+               Create Person
             </Button>
             <Button
-               onClick={() => {
-                  console.log("The cancel button was clicked");
-               }}
-               buttonStyle="btn-danger"
+               onClick={cancelRouteChange}
+               buttonStyle="btn-warning"
                buttonSize="btn-md"
                type="button"
             >
