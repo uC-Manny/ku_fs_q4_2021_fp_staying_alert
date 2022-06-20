@@ -4,23 +4,46 @@ import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function CreatePersonForm() {
-   const [first_name, setfirst_name] = useState("");
-   const [last_name, setlast_name] = useState("");
-   const [pref_name, setpref_name] = useState("");
+   const [first_name, setFirst_name] = useState("");
+   const [last_name, setLast_name] = useState("");
+   const [pref_name, setPref_name] = useState("");
    const [phone, setPhone] = useState("");
-   const [email_addr, setemail_addr] = useState("");
-   const [checkInContacts, setCheckInContacts] = useState("");
-   const [assistAlertContacts, setAssistAlertContacts] = useState("");
-   const [person_is_self, setperson_is_self] = useState("");
+   const [email_addr, setEmail_addr] = useState("");
+   const [checkInContacts, setCheckInContacts] = useState(1);
+   const [assistAlertContacts, setAssistAlertContacts] = useState(1);
+   const [person_is_self, setPerson_is_self] = useState(false);
+
+   const user_id = 1;
+   const assist_id = 1;
+
+   const removed = false;
+
+   async function getPersonList(event) {
+      // event.preventDefault();
+      const response = await fetch("http://localhost:1337/api/person/list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      
+      return await response.json();
+   }
+
+   const person_list = getPersonList();
+
+   console.log("Person List = " + person_list)
 
    async function addPerson(event) {
       // event.preventDefault();
-      const response = await fetch("http://localhost:1337/api/addPerson", {
+      console.log("FE: Add Person Called!!!")
+      const response = await fetch("http://localhost:1337/api/person/create", {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
          },
          body: JSON.stringify({
+            user_id,
             first_name,
             last_name,
             pref_name,
@@ -29,12 +52,17 @@ export default function CreatePersonForm() {
             checkInContacts,
             assistAlertContacts,
             person_is_self,
+            assist_id,
+            removed,
          }),
       });
+      console.log("FE: Add Person POST request sent!!!")
 
       const data = await response.json();
       console.log("data is...", data);
+      alert("Person Added!!!")
    }
+
    return (
       <Formik
          initialValues={{
@@ -43,9 +71,9 @@ export default function CreatePersonForm() {
             pref_name: "",
             phone: "",
             email_addr: "",
-            checkInContacts: "",
-            assistAlertContacts: "",
-            person_is_self: "",
+            checkInContacts: 0,
+            assistAlertContacts: 0,
+            person_is_self: false,
          }}
          onSubmit={addPerson}
       >
@@ -58,21 +86,21 @@ export default function CreatePersonForm() {
                type="text"
                placeholder="First Name"
                value={first_name}
-               onChange={(e) => setfirst_name(e.target.value)}
+               onChange={(e) => setFirst_name(e.target.value)}
             />
             <MyTextInput
                name="last_name"
                type="text"
                placeholder="Last Name"
                value={last_name}
-               onChange={(e) => setlast_name(e.target.value)}
+               onChange={(e) => setLast_name(e.target.value)}
             />
             <MyTextInput
                name="pref_name"
                type="text"
                placeholder="Preferred Name"
                value={pref_name}
-               onChange={(e) => setpref_name(e.target.value)}
+               onChange={(e) => setPref_name(e.target.value)}
             />
             <MyTextInput
                name="phone"
@@ -86,7 +114,7 @@ export default function CreatePersonForm() {
                type="email_addr"
                placeholder="email_addr Address"
                value={email_addr}
-               onChange={(e) => setemail_addr(e.target.value)}
+               onChange={(e) => setEmail_addr(e.target.value)}
             />
             <select className="form-field form-select">
                <option value="" label="Select Check-In Contact(s)"></option>
@@ -111,21 +139,18 @@ export default function CreatePersonForm() {
                   type="checkbox"
                   name="person_is_self"
                   value={person_is_self}
-                  onChange={(e) => setperson_is_self(e.target.value)}
+                  onChange={(e) => setPerson_is_self(e.target.value)}
                />
                Indicate as SELF
             </label>
             <br />
             <br />
             <Button
-               onClick={() => {
-                  console.log("The Add button was clicked");
-               }}
                buttonStyle="btn-success"
                buttonSize="btn-md"
                type="submit"
             >
-               Add
+               Add Person
             </Button>
             <Button
                onClick={() => {
