@@ -1,9 +1,3 @@
-// this is just an example, we don't have to use it, but it
-// is a good component to run on the top of every page
-// we need at least the red Stay alert banner and the user icon
-// when logged in
-
-import { FaSignInAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Header() {
