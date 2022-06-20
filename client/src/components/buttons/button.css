@@ -1,5 +1,5 @@
 :root {
-   --primary: #4628ff;
+   --primary: #2836ff;
    --secondary: #777777;
    --warning: #ffd028;
    --danger: #CC0000;
@@ -11,8 +11,7 @@
 
 .btn {
    font-family: "Roboto", sans-serif;
-   font-weight: 400;
-   border-radius: 10px;
+   font-weight: 500;
    cursor: pointer;
    letter-spacing: 1.3px;
    transition: transform 0.3s ease;
@@ -63,16 +62,25 @@
 /* Button Sizes */
 
 .btn-sm {
-   padding: 5px 10px;
+   padding: 6.6px 10px;
    font-size: 16px;
+   border-radius: 15px;
 }
 
 .btn-md {
-   padding: 10px 20px;
+   padding: 16.6px 20px;
    font-size: 18px;
+   border-radius: 20px;
 }
 
 .btn-lg {
-   padding: 15px 30px;
+   padding: 20px 30px;
    font-size: 20px;
+   border-radius: 25px;
+}
+
+.btn-xl {
+   padding: 40px 60px;
+   font-size: 30px;
+   border-radius: 50px;
 }

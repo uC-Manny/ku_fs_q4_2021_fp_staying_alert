@@ -15,6 +15,7 @@ const assistanceRoutes = require("./routes/assistance_routes");
 const checkInRoutes = require("./routes/check_in_routes");
 const dashboardRoutes = require("./routes/dashboard_routes");
 const transactionRoutes = require("./routes/transactions_routes");
+const Assistance = require("./models/assistance.model");
 
 app.use(cors());
 app.use(express.json());
@@ -38,6 +39,29 @@ mongoose
   })
   .catch((err) => console.log(err));
 
+  app.post("/api/assistance", async (req, res) => {
+    const assistances = await Assistance.find({}); // Get all the assitances
+    let new_assistance_num = 1;
+    const num_assistances = assistances.length;
+    if(num_assistances !== 0) {
+      new_assistance_num = assistances[num_assistances-1].id_num ? assistances[num_assistances-1].id_num + 1 : 1; // Look at the last record for the next number
+    }
+    try {
+        const assitance = await Assistance.create({
+        user_id: req.body.user_id,
+        person_2_assist_id: req.body.person_id_num,
+        critial_info_msg: req.body.criticalInfo,
+        removed: req.body.removed,
+        id_num: new_assistance_num,
+      });
+      assitance.save();
+      res.json({ status: "ok" });
+    } catch (err) {
+      console.log("error is: ", err);
+      res.json({ status: "error", error: err });
+    }
+  });
+    
 app.get("/hello", (req, res) => {
   res.send("hello world");
 });

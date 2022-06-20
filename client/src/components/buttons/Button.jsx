@@ -10,7 +10,7 @@ const styles = [
   "btn-info",
 ];
 
-const sizes = ["btn-sm", "btn-md", "btn-lg"];
+const sizes = ["btn-sm", "btn-md", "btn-lg", "btn-xl"];
 
 export default function Button({
   children,

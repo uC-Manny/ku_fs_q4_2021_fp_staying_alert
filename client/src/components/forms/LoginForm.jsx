@@ -19,63 +19,63 @@ export default function LoginForm() {
         password,
       }),
     });
-
+    
     const data = await response.json();
     console.log("data is...", data);
-  }
-  return (
-    <Formik
-      initialValues={{ user_name: "", password_hash: "" }}
-      onSubmit={loginUser}
-    >
-      <Form className="form-box">
-        <div className="form-name">
-          <h2>Login</h2>
-        </div>
-        <MyTextInput
-          name="user_name"
-          type="text"
-          placeholder="Name"
-          value={uname}
-          onChange={(e) => setUname(e.target.value)}
-        />
-        <MyTextInput
-          name="password_hash"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button
-          // This onClick is for testing purposes only
-          onClick={() => {
-            console.log("The Login button was clicked");
-          }}
-          buttonStyle="btn-success"
-          buttonSize="btn-sm"
-          type="submit"
-        >
-          Login
-        </Button>
-        <Button
-          onClick={() => {
-            console.log("Create Account button was pressed");
-          }}
-          buttonStyle="btn-info"
-          buttonSize="btn-sm"
-        >
-          Create Account
-        </Button>
-        <Button
-          onClick={() => {
-            console.log("The EMERGENCY Alert button was clicked");
-          }}
-          buttonStyle="btn-danger"
-          buttonSize="btn-lg"
-        >
-          Emergency Alert
-        </Button>
-      </Form>
-    </Formik>
-  );
+   }
+   return (
+      <Formik
+         initialValues={{ user_name: "", password_hash: "" }}
+         onSubmit={loginUser}
+      >
+         <Form className="form-box">
+            <div className="form-name">
+               <h2>Login</h2>
+            </div>
+            <MyTextInput
+               name="user_name"
+               type="text"
+               placeholder="Name"
+               value={uname}
+               onChange={(e) => setUname(e.target.value)}
+            />
+            <MyTextInput
+               name="password_hash"
+               type="password"
+               placeholder="Password"
+               value={password}
+               onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+               // This onClick is for testing purposes only
+               onClick={() => {
+                  console.log("The Login button was clicked");
+               }}
+               buttonStyle="btn-success"
+               buttonSize="btn-sm"
+               type="submit"
+            >
+               Login
+            </Button>
+            <Button
+               onClick={() => {
+                  console.log("Create Account button was pressed");
+               }}
+               buttonStyle="btn-info"
+               buttonSize="btn-sm"
+            >
+               Create Account
+            </Button>
+            <Button
+               onClick={() => {
+                  console.log("The EMERGENCY Alert button was clicked");
+               }}
+               buttonStyle="btn-danger"
+               buttonSize="btn-xl"
+            >
+               Emergency Alert
+            </Button>
+         </Form>
+      </Formik>
+   );
 }

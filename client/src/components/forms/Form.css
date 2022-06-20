@@ -39,3 +39,13 @@
    text-align: center;
    align-items: center;
 }
+
+.form-box .btn {
+   justify-content: center;
+   margin: 25px;
+}
+
+.form-box .btn-lg {
+   display: block;
+   margin: 0 auto;
+}
