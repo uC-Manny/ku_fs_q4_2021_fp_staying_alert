@@ -18,21 +18,21 @@ export default function CreatePersonForm() {
 
    const removed = false;
 
-   async function getPersonList(event) {
-      // event.preventDefault();
-      const response = await fetch("http://localhost:1337/api/person/list", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+   // async function getPersonList(event) {
+   //    // event.preventDefault();
+   //    const response = await fetch("http://localhost:1337/api/person/list", {
+   //      method: "POST",
+   //      headers: {
+   //        "Content-Type": "application/json",
+   //      },
+   //    });
       
-      return await response.json();
-   }
+   //    return await response.json();
+   // }
 
-   const person_list = getPersonList();
+   // const person_list = getPersonList();
 
-   console.log("Person List = " + person_list)
+   // console.log("Person List = " + person_list)
 
    async function addPerson(event) {
       // event.preventDefault();
