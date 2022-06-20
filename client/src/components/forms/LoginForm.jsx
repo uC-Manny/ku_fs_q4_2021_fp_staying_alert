@@ -4,24 +4,24 @@ import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
 
 export default function LoginForm() {
-   const [uname, setUname] = useState("");
-   const [password, setPassword] = useState("");
+  const [uname, setUname] = useState("");
+  const [password, setPassword] = useState("");
 
-   async function loginUser(event) {
-      // event.preventDefault();
-      const response = await fetch("http://localhost:1337/api/login", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            uname,
-            password,
-         }),
-      });
-
-      const data = await response.json();
-      console.log("data is...", data);
+  async function loginUser(event) {
+    // event.preventDefault();
+    const response = await fetch("http://localhost:1337/api/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        uname,
+        password,
+      }),
+    });
+    
+    const data = await response.json();
+    console.log("data is...", data);
    }
    return (
       <Formik

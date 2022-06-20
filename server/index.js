@@ -2,10 +2,33 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const User = require("./models/user.model");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+const userRoutes = require("./routes/user_routes");
+// const registerRoutes = require("./routes/register_routes");
+// const loginRoutes = require("./routes/login_routes");
+const personRoutes = require("./routes/person_routes");
+const groupsRoutes = require("./routes/groups_routes");
+const assistanceRoutes = require("./routes/assistance_routes");
+const checkInRoutes = require("./routes/check_in_routes");
+const dashboardRoutes = require("./routes/dashboard_routes");
+const transactionRoutes = require("./routes/transactions_routes");
 const Assistance = require("./models/assistance.model");
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/user", userRoutes);
+// app.use("/api/register", registerRoutes);
+// app.use("/api/login", loginRoutes);
+app.use("/api/person", personRoutes);
+app.use("/api/groups", groupsRoutes);
+app.use("/api/assistance", assistanceRoutes);
+app.use("/api/checkIn", checkInRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/transaction", transactionRoutes);
 
 mongoose
   .connect(
@@ -15,42 +38,6 @@ mongoose
     console.log("Connected to MongoDB!");
   })
   .catch((err) => console.log(err));
-
-  app.post("/api/register", async (req, res) => {
-    const users = await User.find({}); // Get all the users
-    let new_user_num = 1;
-    const num_users = users.length;
-    if(num_users !== 0){
-      new_user_num = users[num_users-1].id_num ? users[num_users-1].id_num + 1 : 1; // Look at the last record for the next number
-    }
-    let bpassword = "";
-    let rpassword = "";
-    bpassword = req.body.password;
-    rpassword = req.body.rpassword;
-    if (bpassword !== rpassword) {
-        err = "!!!Passwords do not match!!!"
-        res.json({ status: "error", error: err });
-    } else {
-      try {
-        const salt = bcrypt.genSaltSync(saltRounds);
-        const hash = bcrypt.hashSync(bpassword, salt);
-        const user = await User.create({
-          user_name: req.body.uname,
-          first_name: req.body.fname,
-          last_name: req.body.lname,
-          email_addr: req.body.email,
-          password_hash: hash,
-          removed: req.body.removed,
-          id_num: new_user_num,
-        });
-          user.save();
-          res.json({ status: "ok" });
-      } catch (err) {
-        console.log("error is: ", err);
-        res.json({ status: "error", error: err });
-      }
-    }
-  });
 
   app.post("/api/assistance", async (req, res) => {
     const assistances = await Assistance.find({}); // Get all the assitances
@@ -75,25 +62,6 @@ mongoose
     }
   });
     
-app.post("/api/login", async (req, res) => {
-  const user = await User.findOne({
-    user_name: req.body.uname,
-  });
-
-  if (!user) {
-    console.log("*** Invalid User Name ***");
-    return res.json({ status: "error", user: false, error: "Invalid User Name" });
-  } 
-  if (!bcrypt.compareSync(req.body.password, user.password_hash)) {
-    console.log("*** Invalid Password Entered ***");
-    return res.json({ status: "error", user: false, error: "Invalid Password Entered" });
-  } else {
-    console.log("!!! Successfully Logged In !!!");
-    return res.json({ status: "ok", user: true, message: "Successfully Logged In",
-                      fname: user.first_name, lname: user.last_name, uname: user.user_name });  // Sending back the names on record! ;-)
-  }
-});
-
 app.get("/hello", (req, res) => {
   res.send("hello world");
 });
