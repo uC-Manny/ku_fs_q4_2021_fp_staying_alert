@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
+import { useHistory } from "react-router-dom";
 
 export default function RegisterForm() {
+   const removed = false;
    const [uname, setUname] = useState("");
    const [fname, setFname] = useState("");
    const [lname, setLname] = useState("");
@@ -11,9 +13,18 @@ export default function RegisterForm() {
    const [password, setPassword] = useState("");
    const [rpassword, setRpassword] = useState("");
 
+   const history = useHistory();
+
+   const cancelRouteChange = () => {
+      let path = '/';
+      history.push(path);
+   }
+
+   const createRouteChange = cancelRouteChange;
+
    async function registerUser(event) {
       // event.preventDefault();
-      const response = await fetch("http://localhost:1337/api/register", {
+      const response = await fetch("http://localhost:1337/api/user/register", {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
@@ -25,6 +36,7 @@ export default function RegisterForm() {
             email,
             password,
             rpassword,
+            removed,
          }),
       });
 
@@ -34,6 +46,7 @@ export default function RegisterForm() {
          alert("Account Successfully Created")
       else
          alert(data.error)
+      createRouteChange();
    }
    return (
       <Formik
@@ -87,15 +100,20 @@ export default function RegisterForm() {
                onChange={(e) => setRpassword(e.target.value)}
             />
             <Button
-               // This onClick is for testing purposes only
-               onClick={() => {
-                  console.log("The Register button was clicked");
-               }}
+               onClick={() => {}}
                buttonStyle="btn-success"
                buttonSize="btn-md"
                type="submit"
             >
                Create Account
+            </Button>
+            <Button
+               onClick={cancelRouteChange}
+               buttonStyle="btn-warning"
+               buttonSize="btn-md"
+               type="button"
+            >
+               Cancel
             </Button>
          </Form>
       </Formik>
