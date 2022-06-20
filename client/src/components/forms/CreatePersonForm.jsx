@@ -75,7 +75,6 @@ export default function CreatePersonForm() {
 
   return (
     <>
-      <Button></Button>
       <Formik
         initialValues={{
           first_name: "",
