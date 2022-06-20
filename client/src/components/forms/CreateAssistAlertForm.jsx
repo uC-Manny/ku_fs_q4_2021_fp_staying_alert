@@ -12,7 +12,7 @@ export default function CreateAssistAlertForm() {
    async function createAssistAlert(event) {
       // event.preventDefault();
       console.log("Reached The Create Assistance Alert Event")
-      const response = await fetch("http://localhost:1337/api/assistance", {
+      const response = await fetch("http://localhost:1337/api/assistance/create", {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
