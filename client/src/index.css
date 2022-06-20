@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body {
   margin: 0;
-  background: #ecf0f3;
+  background: #f5e4e4;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,4 +13,23 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.navbar {
+  background-color: red;
+  color: white;
+  padding: 20px;
+}
+
+.links a{
+  color: white;
+  text-decoration: none;
+  display: inliine-block;
+  margin-right: 20px;
+}
+
+.header a {
+  text-decoration: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 40px;
 }
