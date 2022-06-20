@@ -38,7 +38,7 @@ export default function CreatePersonForm() {
   const history = useHistory();
 
   const cancelRouteChange = () => {
-    let path = "/";
+    let path = "/logged_in";
     history.push(path);
   };
 
