@@ -34,7 +34,7 @@ There are probably very few developers who have not been exposed to or used Visu
 To help keep this code system independent, system specific packages are not included in the repo but need to be pulled into the code base in order to run the code. So the next step is to pull in the proper package dependencies in both the "client" and "server" side. From the projects base directory switch to both the "client" and "server" directories separate, i.e. the command needs to be done twice, and then type the following command from within a VSCode terminal command view:
 > **npm install**
 
-Again, this command needs to be done twice, one in the "..../ku_fs_q4_2021_fp_staying_alert/client/" directory and the "..../ku_fs_q4_2021_fp_staying_alert/server/"
+Again, this command needs to be done twice, once in the "..../ku_fs_q4_2021_fp_staying_alert/client/" directory and again in "..../ku_fs_q4_2021_fp_staying_alert/server/"
 
 In the VSCode terminal from the project base directory "..../ku_fs_q4_2021_fp_staying_alert/" create a split terminal view so that there are two separate terminal views.
 
