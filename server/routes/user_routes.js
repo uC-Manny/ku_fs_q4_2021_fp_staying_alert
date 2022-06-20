@@ -15,8 +15,6 @@ router.post("/login", async (req, res) => {
     user_name: req.body.uname,
   });
 
-  console.log("BkEnd:user = ", user);
-
   if (!user) {
     console.log("*** Invalid User Name ***");
     return res.json({
