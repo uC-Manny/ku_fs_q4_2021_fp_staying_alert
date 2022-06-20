@@ -4,7 +4,13 @@ const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-router.post("/", async (req, res) => {
+//GET register page
+router.get("/register", (req, res) => {
+  res.json({ mssg: "GET register page" });
+});
+
+// POST a new user/register route
+router.post("/register", async (req, res) => {
   const users = await User.find({}); // Get all the users
   const num_users = users.length;
   const new_user_num = users[num_users - 1].id_num
@@ -37,6 +43,47 @@ router.post("/", async (req, res) => {
       console.log("error is: ", err);
       res.json({ status: "error", error: err });
     }
+  }
+});
+
+// GET login or register page
+router.get("/login", (req, res) => {
+  res.json({ mssg: "GET login or register page" });
+});
+
+// POST login route
+router.post("/login", async (req, res) => {
+  const user = await User.findOne({
+    user_name: req.body.uname,
+  });
+
+  console.log("BkEnd:user = ", user);
+
+  if (!user) {
+    console.log("*** Invalid User Name ***");
+    return res.json({
+      status: "error",
+      user: false,
+      error: "Invalid User Name",
+    });
+  }
+  if (!bcrypt.compareSync(req.body.password, user.password_hash)) {
+    console.log("*** Invalid Password Entered ***");
+    return res.json({
+      status: "error",
+      user: false,
+      error: "Invalid Password Entered",
+    });
+  } else {
+    console.log("!!! Successfully Logged In !!!");
+    return res.json({
+      status: "ok",
+      user: true,
+      message: "Successfully Logged In",
+      fname: user.first_name,
+      lname: user.last_name,
+      uname: user.user_name,
+    }); // Sending back the names on record! ;-)
   }
 });
 

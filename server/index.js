@@ -6,8 +6,9 @@ const User = require("./models/user.model");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const registerRoutes = require("./routes/register_routes");
-const loginRoutes = require("./routes/login_routes");
+const userRoutes = require("./routes/user_routes");
+// const registerRoutes = require("./routes/register_routes");
+// const loginRoutes = require("./routes/login_routes");
 const personRoutes = require("./routes/person_routes");
 const groupsRoutes = require("./routes/groups_routes");
 const assistanceRoutes = require("./routes/assistance_routes");
@@ -18,8 +19,9 @@ const transactionRoutes = require("./routes/transactions_routes");
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/register", registerRoutes);
-app.use("/api/login", loginRoutes);
+app.use("/api", userRoutes);
+// app.use("/api/register", registerRoutes);
+// app.use("/api/login", loginRoutes);
 app.use("/api/person", personRoutes);
 app.use("/api/groups", groupsRoutes);
 app.use("/api/assistance", assistanceRoutes);
