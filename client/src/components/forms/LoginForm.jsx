@@ -52,7 +52,7 @@ export default function LoginForm() {
                   console.log("The Login button was clicked");
                }}
                buttonStyle="btn-success"
-               buttonSize="btn-sm"
+               buttonSize="btn-md"
                type="submit"
             >
                Login
@@ -62,7 +62,7 @@ export default function LoginForm() {
                   console.log("Create Account button was pressed");
                }}
                buttonStyle="btn-info"
-               buttonSize="btn-sm"
+               buttonSize="btn-md"
             >
                Create Account
             </Button>

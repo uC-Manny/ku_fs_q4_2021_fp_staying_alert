@@ -3,12 +3,14 @@ import Button from "./components/buttons/Button";
 import RegisterForm from "./components/forms/RegisterForm";
 import LoginForm from "./components/forms/LoginForm";
 import "./App.css";
+import AddPersonForm from "./components/forms/AddPerson";
 
 function App() {
    return (
       <>
          <RegisterForm />
          <LoginForm />
+         <AddPersonForm />
          <h2>Button Styles</h2>
          <Button
             onClick={() => {
