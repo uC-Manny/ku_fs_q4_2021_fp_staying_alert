@@ -1,8 +1,7 @@
-// import LoginForm and Header
-// link buttons to backend api calls /api/login
+import LoginForm from "../forms/LoginForm";
 
-function LoginPage() {
-  return <div>LoginPage</div>;
+export default function LoginPage() {
+  return (
+    <LoginForm />
+  );
 }
-
-export default LoginPage;
