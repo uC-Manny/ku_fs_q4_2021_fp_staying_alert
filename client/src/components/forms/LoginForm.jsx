@@ -83,15 +83,6 @@ export default function LoginForm() {
         >
           Create Account
         </Button>
-        <Button
-          onClick={() => {
-            console.log("The EMERGENCY Alert button was clicked");
-          }}
-          buttonStyle="btn-danger"
-          buttonSize="btn-xl"
-        >
-          Emergency Alert
-        </Button>
       </Form>
     </Formik>
   );
