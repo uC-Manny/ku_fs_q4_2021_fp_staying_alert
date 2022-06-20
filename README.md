@@ -51,4 +51,6 @@ At this point, the Back-End (server) is running and the Front-End (client) is ru
 Thanks for taking the time to review and consider our project worthy of your time!
 
 Sincerely,
+
+
 Stephen, James and Manny
