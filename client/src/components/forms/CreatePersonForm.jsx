@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import Button from "../buttons/Button";
 import { MyTextInput } from "./Form";
@@ -33,6 +34,15 @@ export default function CreatePersonForm() {
    // const person_list = getPersonList();
 
    // console.log("Person List = " + person_list)
+
+   const history = useHistory();
+
+   const cancelRouteChange = () => {
+      let path = "/";
+      history.push(path);
+   };
+
+   const createRouteChange = cancelRouteChange;
 
    async function addPerson(event) {
       // event.preventDefault();
@@ -79,7 +89,7 @@ export default function CreatePersonForm() {
       >
          <Form className="form-box">
             <div className="form-name">
-               <h2>Add Person</h2>
+               <h2>Create Person</h2>
             </div>
             <MyTextInput
                name="first_name"
@@ -153,10 +163,8 @@ export default function CreatePersonForm() {
                Add Person
             </Button>
             <Button
-               onClick={() => {
-                  console.log("The cancel button was clicked");
-               }}
-               buttonStyle="btn-danger"
+               onClick={cancelRouteChange}
+               buttonStyle="btn-warning"
                buttonSize="btn-md"
                type="button"
             >
