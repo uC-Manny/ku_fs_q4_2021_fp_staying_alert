@@ -44,6 +44,11 @@ export default function CreatePersonForm() {
 
   const createRouteChange = cancelRouteChange;
 
+  const addPersonEnd = () => {
+    let path = "/logged_in";
+    history.push(path);
+  };
+
   async function addPerson(event) {
     // event.preventDefault();
     console.log("FE: Add Person Called!!!");
@@ -69,70 +74,80 @@ export default function CreatePersonForm() {
   }
 
   return (
-    <Formik
-      initialValues={{
-        first_name: "",
-        last_name: "",
-        pref_name: "",
-        phone: "",
-        email_addr: "",
-        checkInContacts: 0,
-        assistAlertContacts: 0,
-        person_is_self: false,
-      }}
-      onSubmit={addPerson}
-    >
-      <Form className="form-box">
-        <div className="form-name">
-          <h2>Create Person</h2>
-        </div>
-        <MyTextInput
-          name="first_name"
-          type="text"
-          placeholder="First Name"
-          value={first_name}
-          onChange={(e) => setFirst_name(e.target.value)}
-        />
-        <MyTextInput
-          name="last_name"
-          type="text"
-          placeholder="Last Name"
-          value={last_name}
-          onChange={(e) => setLast_name(e.target.value)}
-        />
-        <MyTextInput
-          name="pref_name"
-          type="text"
-          placeholder="Preferred Name"
-          value={pref_name}
-          onChange={(e) => setPref_name(e.target.value)}
-        />
-        <MyTextInput
-          name="phone"
-          type="tel"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <MyTextInput
-          name="email_addr"
-          type="email_addr"
-          placeholder="email_addr Address"
-          value={email_addr}
-          onChange={(e) => setEmail_addr(e.target.value)}
-        />
-        <Button buttonStyle="btn-success" buttonSize="btn-md" type="submit">
-          Add Person
-        </Button>
-        <Button
-          onClick={cancelRouteChange}
-          buttonStyle="btn-warning"
-          buttonSize="btn-md"
-          type="button"
-        >
-          Cancel
-        </Button>
-      </Form>
-    </Formik>
+    <>
+      <Button></Button>
+      <Formik
+        initialValues={{
+          first_name: "",
+          last_name: "",
+          pref_name: "",
+          phone: "",
+          email_addr: "",
+          checkInContacts: 0,
+          assistAlertContacts: 0,
+          person_is_self: false,
+        }}
+        onSubmit={addPerson}
+      >
+        <Form className="form-box">
+          <div className="form-name">
+            <h2>Create Person</h2>
+          </div>
+          <MyTextInput
+            name="first_name"
+            type="text"
+            placeholder="First Name"
+            value={first_name}
+            onChange={(e) => setFirst_name(e.target.value)}
+          />
+          <MyTextInput
+            name="last_name"
+            type="text"
+            placeholder="Last Name"
+            value={last_name}
+            onChange={(e) => setLast_name(e.target.value)}
+          />
+          <MyTextInput
+            name="pref_name"
+            type="text"
+            placeholder="Preferred Name"
+            value={pref_name}
+            onChange={(e) => setPref_name(e.target.value)}
+          />
+          <MyTextInput
+            name="phone"
+            type="tel"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <MyTextInput
+            name="email_addr"
+            type="email_addr"
+            placeholder="email_addr Address"
+            value={email_addr}
+            onChange={(e) => setEmail_addr(e.target.value)}
+          />
+          <Button buttonStyle="btn-success" buttonSize="btn-md" type="submit">
+            Add Person
+          </Button>
+          <Button
+            onClick={cancelRouteChange}
+            buttonStyle="btn-warning"
+            buttonSize="btn-md"
+            type="button"
+          >
+            Cancel
+          </Button>
+          <Button
+            buttonSize="btn-md"
+            buttonStyle="btn-info"
+            onClick={addPersonEnd}
+          >
+            Dashboard
+          </Button>
+        </Form>
+      </Formik>
+    </>
   );
 }

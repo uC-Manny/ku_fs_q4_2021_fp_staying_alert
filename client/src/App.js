@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Header />
         <div className="App">
           <div>
