@@ -11,19 +11,18 @@ export default function LoginForm() {
   const history = useHistory();
 
   const loginSuccRouteChange = () => {
-     let path = '/logged_in';
-     history.push(path);
-  }
+    let path = "/logged_in";
+    history.push(path);
+  };
 
   const loginFailRouteChange = () => {
-     let path = '/';
-     history.push(path);
-  }
+    let path = "/";
+    history.push(path);
+  };
   const creatAcctRouteChange = () => {
-     let path = '/register';
-     history.push(path);
-  }
-
+    let path = "/register";
+    history.push(path);
+  };
 
   async function loginUser(event) {
     // event.preventDefault();
@@ -37,65 +36,63 @@ export default function LoginForm() {
         password,
       }),
     });
-    
+
     const data = await response.json();
     console.log("data is...", data);
-    if(data.status === "ok")
-       loginSuccRouteChange();
-    else
-       loginFailRouteChange();
-   }
-   return (
-      <Formik
-         initialValues={{ user_name: "", password_hash: "" }}
-         onSubmit={loginUser}
-      >
-         <Form className="form-box">
-            <div className="form-name">
-               <h2>Login</h2>
-            </div>
-            <MyTextInput
-               name="user_name"
-               type="text"
-               placeholder="Name"
-               value={uname}
-               onChange={(e) => setUname(e.target.value)}
-            />
-            <MyTextInput
-               name="password_hash"
-               type="password"
-               placeholder="Password"
-               value={password}
-               onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button
-               // This onClick is for testing purposes only
-               onClick={() => {
-                  console.log("The Login button was clicked");
-               }}
-               buttonStyle="btn-success"
-               buttonSize="btn-md"
-               type="submit"
-            >
-               Login
-            </Button>
-            <Button
-               onClick={creatAcctRouteChange}
-               buttonStyle="btn-info"
-               buttonSize="btn-md"
-            >
-               Create Account
-            </Button>
-            <Button
-               onClick={() => {
-                  console.log("The EMERGENCY Alert button was clicked");
-               }}
-               buttonStyle="btn-danger"
-               buttonSize="btn-xl"
-            >
-               Emergency Alert
-            </Button>
-         </Form>
-      </Formik>
-   );
+    if (data.status === "ok") loginSuccRouteChange();
+    else loginFailRouteChange();
+  }
+  return (
+    <Formik
+      initialValues={{ user_name: "", password_hash: "" }}
+      onSubmit={loginUser}
+    >
+      <Form className="form-box">
+        <div className="form-name">
+          <h2>Login</h2>
+        </div>
+        <MyTextInput
+          name="user_name"
+          type="text"
+          placeholder="Name"
+          value={uname}
+          onChange={(e) => setUname(e.target.value)}
+        />
+        <MyTextInput
+          name="password_hash"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button
+          // This onClick is for testing purposes only
+          onClick={() => {
+            console.log("The Login button was clicked");
+          }}
+          buttonStyle="btn-success"
+          buttonSize="btn-md"
+          type="submit"
+        >
+          Login
+        </Button>
+        <Button
+          onClick={creatAcctRouteChange}
+          buttonStyle="btn-info"
+          buttonSize="btn-md"
+        >
+          Create Account
+        </Button>
+        <Button
+          onClick={() => {
+            console.log("The EMERGENCY Alert button was clicked");
+          }}
+          buttonStyle="btn-danger"
+          buttonSize="btn-xl"
+        >
+          Emergency Alert
+        </Button>
+      </Form>
+    </Formik>
+  );
 }
