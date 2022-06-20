@@ -3,7 +3,11 @@ const router = express.Router();
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 
-router.post("/api/login", async (req, res) => {
+router.get("/", (req, res) => {
+  return res.status(200).json({ message: "GET login or register route/page" });
+});
+
+router.post("/", async (req, res) => {
   const user = await User.findOne({
     user_name: req.body.uname,
   });

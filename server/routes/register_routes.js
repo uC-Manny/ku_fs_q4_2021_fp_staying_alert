@@ -4,7 +4,7 @@ const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-router.post("/api/register", async (req, res) => {
+router.post("/", async (req, res) => {
   const users = await User.find({}); // Get all the users
   const num_users = users.length;
   const new_user_num = users[num_users - 1].id_num
