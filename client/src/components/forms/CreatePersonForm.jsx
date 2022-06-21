@@ -83,10 +83,6 @@ export default function CreatePersonForm() {
 
   return (
     <>
-<<<<<<< HEAD
-=======
-      <Button></Button>
->>>>>>> 097e32fe2e123d4d7bd7ca70fc39266d08399e11
       <Formik
         initialValues={{
           first_name: "",
@@ -139,16 +135,12 @@ export default function CreatePersonForm() {
             value={email_addr}
             onChange={(e) => setEmail_addr(e.target.value)}
           />
-<<<<<<< HEAD
           <Button
             onClick={clearForm}
             buttonStyle="btn-success"
             buttonSize="btn-md"
             type="submit"
           >
-=======
-          <Button buttonStyle="btn-success" buttonSize="btn-md" type="submit">
->>>>>>> 097e32fe2e123d4d7bd7ca70fc39266d08399e11
             Add Person
           </Button>
           <Button
