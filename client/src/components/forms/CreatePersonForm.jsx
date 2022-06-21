@@ -37,6 +37,14 @@ export default function CreatePersonForm() {
 
   const history = useHistory();
 
+  const clearForm = () => {
+    setFirst_name("");
+    setLast_name("");
+    setPref_name("");
+    setEmail_addr("");
+    setPhone("");
+  };
+
   const cancelRouteChange = () => {
     let path = "/logged_in";
     history.push(path);
@@ -127,7 +135,12 @@ export default function CreatePersonForm() {
             value={email_addr}
             onChange={(e) => setEmail_addr(e.target.value)}
           />
-          <Button buttonStyle="btn-success" buttonSize="btn-md" type="submit">
+          <Button
+            onClick={clearForm}
+            buttonStyle="btn-success"
+            buttonSize="btn-md"
+            type="submit"
+          >
             Add Person
           </Button>
           <Button
